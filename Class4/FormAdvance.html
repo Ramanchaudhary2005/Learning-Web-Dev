@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <h1>User Info</h1>
+    <form action="" method="get">
+        <label>Namo of the user</label>
+        <input type="text" placeholder="User name" name="user-name" value="Mr."/>
+        <br/>
+        <label>Email of User</label>
+        <input type="email" placeholder="Email" name="q" autocomplete="off"/>
+        <br/>
+        <label>Phone no</label>
+        <input type="number" placeholder="Phone no" name="p" disabled value="8077890222"/>
+        <br/>
+        <label for="In-pass">Password</label>
+        <input type="password" placeholder="Password" name="pa" required id="In-pass"/>
+        <br/>
+        <label>Gender</label>
+        <input type="radio" name="gender"/><label>Male</label>
+        <input type="radio" name="gender"/><label>Female</label>
+        <br />
+        <label for="ed">Hobby</label>
+        <input type="checkbox" name="hobby" value="web-dev" id="web-d" checked disabled/>
+        <label for="web-d">Web-Dev</label>
+        <input type="checkbox" name="hobby" value="dsa" id="ds"/>
+        <label for="ds">Data Science</label>
+        <br/>
+        <label for="city1">City</label>
+        <select id="city1" name="user-city">
+            <option value="dl">Delhi</option>
+            <option value="mn">Mumbai</option>
+            <option value="bg">Banglore</option>
+            <option value="kl">Kolkata</option>
+            <option value="kh" selected>khurja</option>
+        </select>
+        <br/>
+
+        <textarea placeholder="Write about you"></textarea>
+        <br/>
+        <input type="Submit"/>
+        <input type="reset" />
+    </form>
+</body>
+</html>
