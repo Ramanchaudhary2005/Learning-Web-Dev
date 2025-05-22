@@ -1,4 +1,4 @@
-# P_P_TUT HTML Practice Project
+## HTML Practice Project
 
 This project contains various HTML files organized by class folders, each demonstrating different HTML concepts and elements. Below is a detailed overview of each file and its purpose.
 
