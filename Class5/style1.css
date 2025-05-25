@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+body{
+    padding: 48px;
+}
+
+.card1{
+    background-color: yellow;
+    padding: 50px;
+    max-width: 800px;
+    margin: auto;
+    border-radius: 8px;
+    margin-bottom: 48px;
+}
+
+.card1-child{
+    background-color: aqua;
+    padding: 24px;
+    max-width: 400px;
+    margin: auto;
+    border-radius: 8px;
+}
+
+.title1{
+    text-align: center;
+}
+
+.title1{
+    text-align: center;
+}
+
+.card2{
+    background-color: yellow;
+    padding: 50px;
+    max-width: 800px;
+    margin: auto;
+    border-radius: 8px;
+}
+
+.card2-child{
+    background-color: aqua;
+    padding: 24px;
+    max-width: 400px;
+    margin: auto;
+    border-radius: 8px;
+}
+
+.title2{
+    text-align: center;
+}
+
+.title2{
+    text-align: center;
+}
