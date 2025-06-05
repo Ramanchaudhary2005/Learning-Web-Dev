@@ -11,11 +11,12 @@ header{
     
     padding: 20px 140px;
 }
-/* body{
-    /* background-color: #000000; */
+
+body{
+    background-color: rgb(41, 41, 41);
     
-
-
+}
+    
 .default-ltr-cache-4wvxq9-StyledBrandLogo {
     width: 9.25rem;
     height: 2.5rem;
@@ -24,16 +25,27 @@ header{
     display: block;
 }
 .signin-class>select{       
-        padding: 6px 36px 6px 34px;
+        padding: 3px 16px 3px 16px;
         color: white;
-        background-color: #242424;
+        background-color: transparent;
         border-radius: 4px;
+        font-size: 16px;
+        font-weight: bold;
+}
+
+.signin-class{
+    display: flex;
+    gap: 12px;
 }
 
 .signin-class>button{       
-        padding: 6px 36px 6px 34px;
+        padding: 3px 16px 3px 14px;
         color: white;
         background-color: #ff0000;
         border-radius: 4px;
         cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: solid;
+        border: 2px solid black;
 }
