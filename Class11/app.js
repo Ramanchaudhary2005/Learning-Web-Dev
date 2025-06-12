@@ -9,3 +9,16 @@ let city = function calculatesum(a,b){
 }
 
 city(10,20);
+
+let city1 = (a,b) => {
+    console.log(a+b);
+}
+
+city1(20,20);
+
+
+let percentageOfMarks = (a,b,c,d,e)=>{
+    console.log(((a+b+c+d+e)/500)*100);
+}
+
+percentageOfMarks(80,88,89,87,82);
