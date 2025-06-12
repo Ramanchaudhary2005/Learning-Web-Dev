@@ -1,0 +1,29 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    padding:24px;
+}
+
+.grid-parent{
+    padding: 24px;
+    background-color: aquamarine;
+    border: 2px solid black;
+    display: grid;
+    grid-template-columns: repeat(4, 150px);
+    /* grid-template-rows: 200px 200px; */
+    grid-auto-rows: 150px;
+    column-gap: 20px;
+    row-gap: 20px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-parent > div{
+    background-color: bisque;
+    border: 2px solid brown;
+}
