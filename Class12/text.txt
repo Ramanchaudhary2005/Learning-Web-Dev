@@ -1,0 +1,11 @@
+const age = 20;
+const name = "Raman";
+const data = () => {};
+
+function print(txt){
+    console.log(txt);
+}
+
+const val = "Hello World";
+const data = () => {};
+print(data);
