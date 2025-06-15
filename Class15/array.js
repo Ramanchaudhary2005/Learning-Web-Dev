@@ -33,3 +33,20 @@
 
 // -----------------------------------------------------------------------------------------------------
 
+// const fruits = Array(["Mango", "Banana", "Kiwi", "Grapes"])
+// console.log(fruits.length);
+
+// const newfruit = prompt("Which fruit you want to add?")
+// // fruits[4] = newfruit;
+// fruits.push(newfruit)
+// console.log(fruits.length);
+
+// -----------------------------------------------------------------------------------------------------
+
+const fruits = Array(["Mango", "Banana", "Kiwi", "Grapes"])
+
+fruits[1] = "blueberry"
+delete fruits[1]
+console.log(fruits)
+
+// SPLICE FROM MDM 
