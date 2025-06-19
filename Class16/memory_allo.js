@@ -4,6 +4,8 @@
 //     year: 2025,
 // }
 
+// const { formatSpecifier } = require("d3")
+
 // // for(let i in car){
 // //     console.log('key=',i, 'value=', car[i])
 // // }
