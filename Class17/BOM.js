@@ -31,3 +31,8 @@ setTimeout(()=>{
         elem.style.color = "brown";
     }
 }, 5000);
+
+
+// --------- CREATE A ELEMENT -------------
+
+
