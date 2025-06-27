@@ -16,6 +16,6 @@ const item1 = React.createElement("li",{
     className: "fancy-text"
 },"item-1");
 const item2 = React.createElement("li",{},"item-2");
-const listcontainer = React.createElement("ul",{}, item1, item2);
+const listcontainer = React.createElement("ul",{}, [item1, item2]);
 
 reactroot.render(listcontainer);
