@@ -4,12 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .fancy-text{
+            color: blue;
+        }
+    </style>
 </head>
 <body>
     <h2>JS DOM!</h2>
     <div id="root">
-        
+        <h2>hello from root</h2>   // this will not print becaiuse control is on vrdom
     </div>
+    <!-- <main>
+        <h1>Hello from main</h1>
+    </main>
+    <footer>
+        <h4>Footer</h4>
+    </footer> -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="app.js"></script>
