@@ -1,8 +1,12 @@
-const domroot = document.getElementById("root")
-const newlistcontainer = document.createElement("ul");
+// const domroot = document.getElementById("root")
+// const newlistcontainer = document.createElement("ul");
 
-domroot.appendChild(newlistcontainer)
+// domroot.appendChild(newlistcontainer)
 
-const listitems = document.createElement('li')
-newlistcontainer.appendChild(listitems)
-listitems.innerText = "Item1"
+// const listitems = document.createElement('li')
+// newlistcontainer.appendChild(listitems)
+// listitems.innerText = "Item1"
+
+
+// -------------------------------------------------------------------------------------
+
