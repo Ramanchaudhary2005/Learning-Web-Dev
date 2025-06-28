@@ -43,14 +43,31 @@
 
 // reactroot.render(conatiner);
 
-const Card = (
+const Card1 = (
     <div className = "card">
         <h1>Title</h1>
         <p>Description</p>
     </div>
 );
 
+const Card = (obj) => {
+    return (
+        <div>
+            <h1>{obj.title}</h1>
+            <p>-------</p>
+        </div>
+    );
+}
+
+const Container = (
+    <div>
+        {Card1}
+        {Card({title: "Notice..."})}
+        {Card({title: "Innovation"})}
+    </div>
+);
+
 const domroot = document.getElementById("root");
 const reactroot = ReactDOM.createRoot(domroot);
 
-reactroot.render(Card);
+reactroot.render(Container);
