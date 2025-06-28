@@ -21,6 +21,39 @@
 
 // ------------------------------------------------------------
 
+
+
+// const domRoot = document.getElementById("parent");
+// const reactRoot = ReactDOM.createRoot(domRoot);
+
+// const ProductCard = (obj)=>{
+//     return <div>
+//         <h3>{obj.productname}</h3>
+//         <img src=""></img>
+//         <p>Price</p>
+//         <p>Rating</p>
+//     </div>
+// }
+
+// const App = () =>{
+//     return<div>
+//         <header>
+//             <a>Home</a><a>Search</a><a>Help</a>
+//         </header>
+//         <main>
+//             {ProductCard({productname: "Mixer"})}
+//             {ProductCard({productname: "Tv"})}
+//         </main>
+//         <footer>
+//             &copy; Raman.com
+//         </footer>
+//     </div>
+// }
+
+// reactRoot.render(App());
+
+// ----------------------------------------------------------------------
+
 const data = {
   "products": [
     {
@@ -1825,58 +1858,29 @@ const data = {
   "limit": 30
 }
 
-// const domRoot = document.getElementById("parent");
-// const reactRoot = ReactDOM.createRoot(domRoot);
-
-// const ProductCard = (obj)=>{
-//     return <div>
-//         <h3>{obj.productname}</h3>
-//         <img src=""></img>
-//         <p>Price</p>
-//         <p>Rating</p>
-//     </div>
-// }
-
-// const App = () =>{
-//     return<div>
-//         <header>
-//             <a>Home</a><a>Search</a><a>Help</a>
-//         </header>
-//         <main>
-//             {ProductCard({productname: "Mixer"})}
-//             {ProductCard({productname: "Tv"})}
-//         </main>
-//         <footer>
-//             &copy; Raman.com
-//         </footer>
-//     </div>
-// }
-
-// reactRoot.render(App());
-
-// ----------------------------------------------------------------------
-
 const domRoot = document.getElementById("parent");
 const reactRoot = ReactDOM.createRoot(domRoot);
+const {products} = data;
+
 
 const ProductCard = (obj)=>{
-    return <div>
+    return <div className="card">
         <h3>{obj.productname}</h3>
-        <img src=""></img>
+        <img src={obj.imgLink} width="100px"></img>
         <p>Price: {obj.price}</p>
         <p>Rating</p>
     </div>
 }
 
 const App = () =>{
-    return<div>
+    return<div className="root-container">
         <header>
             <a>Home</a><a>Search</a><a>Help</a>
         </header>
         <main>
-            {ProductCard({productname: "Mixer", price: "1500"})}
-            {ProductCard({productname: "Tv", price: "15000"})}
-            <ProductCard productname="Fan" price={2230}></ProductCard>
+            <ProductCard productname={products[0].title} price={products[0].price} imgLink={products[0].thumbnail}></ProductCard>
+            <ProductCard productname={products[1].title} price={products[1].price} imgLink={products[1].thumbnail}></ProductCard>
+            <ProductCard productname={products[2].title} price={products[2].price} imgLink={products[2].thumbnail}></ProductCard>
         </main>
         <footer>
             &copy; Raman.com

@@ -3,3 +3,43 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+/* .root-container{
+    background-color: aqua;
+} */
+
+header{
+    padding: 1rem 2rem;
+    background-color: antiquewhite;
+    display: flex;
+    gap: 3rem;
+}
+
+header a{
+    color:blue;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+footer{
+    padding: 1rem 2rem;
+    background-color: rgb(237, 158, 55);
+    display: flex;
+    gap: 3rem;
+}
+
+main{
+    padding: 1rem 2rem;
+    background-color: rgb(228, 255, 108);
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.card{
+    padding: 1.5rem;
+    border: 1px solid black;
+    border-radius: 1.5rem;
+    background-color: aqua;
+}
