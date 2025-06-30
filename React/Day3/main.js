@@ -8,11 +8,6 @@ const reactRoot = ReactDom.createRoot(domRoot);
 console.log(React);
 
 
-
-
-
-
-
 const App = ()=>{
     return <div>
         <Header/>
