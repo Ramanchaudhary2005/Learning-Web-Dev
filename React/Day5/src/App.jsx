@@ -1,22 +1,32 @@
-import {useState} from "react";
+import { useState } from "react";
 
 const App = () => {
-  // let username = "Raman";
-  const[monitor, controller] = useState("Raman");
-  console.log(monitor);
+  const [monitor, controller] = useState("Raman");
+
   const handlesearch = (e) => {
     const val = e.target.value;
-    controller(val)
-    console.log(monitor);
+    controller(val);
+    console.log(monitor); 
+  };
+
+  const handlePaste = (e) => {
+    e.preventDefault(); 
+    alert("Pasting is disabled!");
   };
 
   return (
     <div>
-      <input type="text" onChange={handlesearch} value={monitor}/>
+      <input
+        type="text"
+        onChange={handlesearch}
+        onPaste={handlePaste}
+        value={monitor}
+      />
       <h2>{monitor}</h2>
     </div>
   );
 };
 
 export default App;
+
 
