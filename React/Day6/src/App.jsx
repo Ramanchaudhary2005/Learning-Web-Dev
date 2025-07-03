@@ -1,6 +1,20 @@
 import {useState} from "react";
 
+
+// whwnever object.is return false react will consideer it as value change
+
 const App = ()=>{
+
+    const [users, setUser] = useState([
+        {
+            username: "Raman",
+            city: "Mumbai",
+            email: "ramanch7890@gmail.com",
+        },
+    ]);
+
+    console.log(users);
+
     const[name, setName] = useState("");
     const[city, setCity] = useState("");
     const[email, setEmail] = useState("");
