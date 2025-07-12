@@ -1,9 +1,23 @@
 const http = require("node:http");
+const fsPromises = require('fs/promises');
 
-const server = http.createServer((req, res)=>{
-    console.log("Hello");
-    res.writeHead(200,{'Content-Type':'text/html'});
-    res.end("<h1>Hello from nodejs</h1>");
+const server = http.createServer(async(req, res)=>{
+    try{
+        console.log("Hello");
+        if(req.url=="/"){
+            const data = await fsPromises.readFile('./pages/homepage.html','utf-8');
+            res.end(data);
+        }
+        else{
+            const data = await fsPromises.readFile('./pages/notFound.html','utf-8');
+            res.end(data);
+        }
+    }
+    catch(err){
+        res.end("<h1>Something went wrong</h1>")
+    }
+    
+    
 });
 
 
