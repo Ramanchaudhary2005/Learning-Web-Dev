@@ -1,24 +1,22 @@
 const fsPromises = require("fs/promises");
 
-const myReadFile = (filepath) => {
-    try{
-        fsPromises.readFile(filepath, "utf-8");
+const myReadFile = async (filepath) => {
+    try {
+        const data = await fsPromises.readFile(filepath, "utf-8");
         return JSON.parse(data);
-    }
-    catch(err){
+    } catch (err) {
         console.log("Error reading the file -->", err.message);
         return [];
     }
 };
 
-const mySaveFile = async (filepath,data)=>{
-    try{
+const mySaveFile = async (filepath, data) => {
+    try {
         const str = JSON.stringify(data);
         await fsPromises.writeFile(filepath, str);
-    }
-    catch{
+    } catch (err) {
         console.log("Error saving file", err.message);
     }
-}
+};
 
-module.exports = {myReadFile, mySaveFile};
+module.exports = { myReadFile, mySaveFile };
