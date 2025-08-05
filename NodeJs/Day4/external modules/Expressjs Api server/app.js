@@ -12,6 +12,6 @@ app.get("/",(req, res)=>{
     })
 })
 
-app.listen(2900,()=>{
+app.listen(3900,()=>{
     console.log("--------server started--------");
 });
