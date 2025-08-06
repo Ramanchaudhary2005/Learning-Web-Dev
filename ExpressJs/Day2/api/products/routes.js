@@ -1,4 +1,5 @@
 const express = require("express");
+const { createProductController } = require("./controllers");
 
 const productsRouter = express.Router();
 
@@ -10,9 +11,7 @@ const productsRouter = express.Router();
 productsRouter.get("/", (req,res)=>{
     res.status(200).send("get Dummy products endpoint!");
 });
-productsRouter.post("/", (req,res)=>{
-    res.status(200).send(" post Dummy products endpoint!");
-});
+productsRouter.post("/", createProductController);
 productsRouter.patch("/", (req,res)=>{
     res.status(200).send("patch Dummy products endpoint!");
 });
