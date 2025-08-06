@@ -1,4 +1,7 @@
 const express = require("express");
+const { productsRouter } = require("./products/routes");
+const { ordersRouter } = require("./orders/routes");
+
 
 const apiRouter = express.Router();
 
@@ -7,12 +10,7 @@ apiRouter.use((res,req,next)=>{
     next();
 });
 
-apiRouter.get("/orders", (req,res)=>{
-    res.status(200).send("Dummy orders endpoint!");
-});
-
-apiRouter.get("/products", (req,res)=>{
-    res.status(200).send("Dummy orders endpoint!");
-});
+apiRouter.use("/orders", ordersRouter);
+apiRouter.use("/orders", productsRouter);
 
 module.exports = {apiRouter};
