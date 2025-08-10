@@ -1,8 +1,11 @@
 const express = require("express");
-const {createProductController} = require("./controllers");
-const { createProductValidator } = require("./dto");
+const {createProductController, updateProductController, getProductController, deleteProductController} = require("./controllers");
+const { createProductValidator, getProductValidator } = require("./dto");
 const productRouter = express.Router();
 
 productRouter.post("/", createProductValidator,createProductController);
+productRouter.patch("/:productId",createProductValidator, updateProductController);
+productRouter.get("/:productId", getProductValidator, getProductController);
+productRouter.delete("/:productId",  deleteProductController);
 
 module.exports = {productRouter};

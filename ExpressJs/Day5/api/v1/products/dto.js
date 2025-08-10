@@ -1,3 +1,5 @@
+const mongoose = require("mongoose");
+
 const createProductValidator = (req, res, next) => {
     try{
         const { title, price } = req.body;
@@ -11,4 +13,16 @@ const createProductValidator = (req, res, next) => {
     }
 };
 
-module.exports = { createProductValidator };
+const getProductValidator = (req, res, next) => {
+    const productId = req.params.productId.trim(); // <-- trim here
+    if (!mongoose.Types.ObjectId.isValid(productId)) {
+        return res.status(400).json({
+            isSuccess: false,
+            message: "Invalid product id",
+            data: {},
+        });
+    }
+    next();
+};
+
+module.exports = { createProductValidator, getProductValidator };
