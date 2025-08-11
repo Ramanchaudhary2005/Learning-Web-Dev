@@ -23,22 +23,14 @@ const createProductController = async(req, res)=>{
 
 const getProductController = async(req, res)=>{
     try{
-        const productId = req.params.productId.trim(); // <-- trim here
-        const product = await ProductModel.findById(productId);
-
-        if(!product){
-            return res.status(404).json({
-                isSuccess: false,
-                message: "Product not found",
-                data: {},
-            })
-        }
-
+       
+        const product = await ProductModel.find()
+         
         res.status(200).json({
             isSuccess: true,
             message: "Product retrieved",
             data: {
-                product
+                products: product,
             }
         })
     }
@@ -111,4 +103,31 @@ const deleteProductController = async(req, res)=>{
     }
 };
 
-module.exports = {createProductController, getProductController, updateProductController, deleteProductController}
+// List product controller
+
+const listProductController = async (req, res) => {
+    try {
+        const limit = parseInt(req.query.limit) || 5;
+        const page = parseInt(req.query.page) || 1;
+        const skip = (page - 1) * limit;
+
+        const products = await ProductModel.find().skip(skip).limit(limit);
+
+        res.status(200).json({
+            isSuccess: true,
+            message: "Products retrieved",
+            data: {
+                products: products,
+            }
+        });
+    } catch (err) {
+        console.log('---error in getting products---', err.message);
+        res.status(500).json({
+            isSuccess: false,
+            message: "Internal Server Error",
+            data: {},
+        });
+    }
+};
+
+module.exports = {createProductController, getProductController, updateProductController, deleteProductController, listProductController}

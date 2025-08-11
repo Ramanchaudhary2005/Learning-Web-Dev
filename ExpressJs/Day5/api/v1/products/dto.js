@@ -14,7 +14,7 @@ const createProductValidator = (req, res, next) => {
 };
 
 const getProductValidator = (req, res, next) => {
-    const productId = req.params.productId.trim(); // <-- trim here
+    const productId = req.params.productId.trim();
     if (!mongoose.Types.ObjectId.isValid(productId)) {
         return res.status(400).json({
             isSuccess: false,

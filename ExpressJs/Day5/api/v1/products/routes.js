@@ -5,7 +5,7 @@ const productRouter = express.Router();
 
 productRouter.post("/", createProductValidator,createProductController);
 productRouter.patch("/:productId",createProductValidator, updateProductController);
-productRouter.get("/:productId", getProductValidator, getProductController);
+productRouter.get("/", getProductValidator, getProductController);
 productRouter.delete("/:productId",  deleteProductController);
 
 module.exports = {productRouter};
