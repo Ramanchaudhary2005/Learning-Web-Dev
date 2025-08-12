@@ -107,18 +107,25 @@ const deleteProductController = async(req, res)=>{
 
 const listProductController = async (req, res) => {
     try {
+        const { q = "" } = req.query; // <-- use req.query, not res.query
         const limit = parseInt(req.query.limit) || 5;
         const page = parseInt(req.query.page) || 1;
         const skip = (page - 1) * limit;
 
-        const products = await ProductModel.find().skip(skip).limit(limit);
+        const searchRegex = new RegExp(q, "i");
+        const products = await ProductModel.find({
+            $or: [
+                { title: searchRegex },
+                { description: searchRegex }
+            ]
+        })
+        .skip(skip)
+        .limit(limit);
 
         res.status(200).json({
             isSuccess: true,
             message: "Products retrieved",
-            data: {
-                products: products,
-            }
+            data: { products }
         });
     } catch (err) {
         console.log('---error in getting products---', err.message);
