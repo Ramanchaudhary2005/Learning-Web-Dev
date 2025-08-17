@@ -1,8 +1,8 @@
 const userSignupValidator = (req, res, next)=>{
     try{
-        const {email, password} = req.body;
+        const {email, password, otp} = req.body;
 
-        if(!email || !password){
+        if(!email || !password || !otp){
             return res.status(400).json({
                 isSuccess: false,
                 message: "Email and password are required",

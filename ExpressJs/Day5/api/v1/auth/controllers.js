@@ -1,8 +1,10 @@
 const { UserModel } = require("../../../models/userSchema");
 
+
+
 const userSignupController = async (req, res) => { // <-- fixed order
     try {
-        const { email, password } = req.body;
+        const { email, password} = req.body;
         const newUser = await UserModel.create({
             email,
             password,
@@ -37,4 +39,4 @@ const userSignupController = async (req, res) => { // <-- fixed order
     }
 };
 
-module.exports = { userSignupController };
+module.exports = { userSignupController  };
