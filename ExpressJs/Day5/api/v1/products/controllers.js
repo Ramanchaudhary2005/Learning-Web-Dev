@@ -107,12 +107,21 @@ const deleteProductController = async(req, res)=>{
 
 const listProductController = async (req, res) => {
     try {
-        const { q = "" } = req.query; // <-- use req.query, not res.query
+        const { q = "" } = req.query;
         const limit = parseInt(req.query.limit) || 5;
         const page = parseInt(req.query.page) || 1;
         const skip = (page - 1) * limit;
 
         const searchRegex = new RegExp(q, "i");
+
+        // Count all results
+        const totalProducts = await ProductModel.countDocuments({
+            $or: [
+                { title: searchRegex },
+                { description: searchRegex }
+            ]
+        });
+
         const products = await ProductModel.find({
             $or: [
                 { title: searchRegex },
@@ -125,7 +134,7 @@ const listProductController = async (req, res) => {
         res.status(200).json({
             isSuccess: true,
             message: "Products retrieved",
-            data: { products }
+            data: { products, total: totalProducts, limit, page }
         });
     } catch (err) {
         console.log('---error in getting products---', err.message);
@@ -136,5 +145,6 @@ const listProductController = async (req, res) => {
         });
     }
 };
+
 
 module.exports = {createProductController, getProductController, updateProductController, deleteProductController, listProductController}
