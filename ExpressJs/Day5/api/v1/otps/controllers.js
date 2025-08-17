@@ -1,4 +1,5 @@
 const { OtpModel } = require("../../../models/otpSchema");
+const { sendOtpEmail } = require("../../../utils/emailhelper");
 
 const sendOtpController = async (req, res) => {
     try {
@@ -6,6 +7,8 @@ const sendOtpController = async (req, res) => {
 
         // generate OTP
         const otp = Math.floor(100000 + Math.random() * 900000);
+
+        await sendOtpEmail(email, otp); // <-- this function should be defined to send the OTP via email
 
         // save in DB
         await OtpModel.create({ email, otp });
