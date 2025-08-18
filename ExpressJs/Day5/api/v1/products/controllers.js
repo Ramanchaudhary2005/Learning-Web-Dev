@@ -112,24 +112,23 @@ const listProductController = async (req, res) => {
         const page = parseInt(req.query.page) || 1;
         const skip = (page - 1) * limit;
 
+        // sort field & order (default: price descending)
+        const sortField = req.query.sort || "price";
+        const sortOrder = req.query.order === "asc" ? 1 : -1; // default = descending
+
         const searchRegex = new RegExp(q, "i");
 
         // Count all results
         const totalProducts = await ProductModel.countDocuments({
-            $or: [
-                { title: searchRegex },
-                { description: searchRegex }
-            ]
+            $or: [{ title: searchRegex }, { description: searchRegex }]
         });
 
         const products = await ProductModel.find({
-            $or: [
-                { title: searchRegex },
-                { description: searchRegex }
-            ]
+            $or: [{ title: searchRegex }, { description: searchRegex }]
         })
         .skip(skip)
-        .limit(limit);
+        .limit(limit)
+        .sort({ [sortField]: sortOrder }); // <-- apply sorting
 
         res.status(200).json({
             isSuccess: true,
@@ -145,6 +144,7 @@ const listProductController = async (req, res) => {
         });
     }
 };
+
 
 
 module.exports = {createProductController, getProductController, updateProductController, deleteProductController, listProductController}
