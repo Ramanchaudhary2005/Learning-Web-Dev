@@ -51,6 +51,15 @@ const userSignupController = async (req, res) => {
   } catch (err) {
     console.log("---error in user signup---", err.message);
 
+    // user accorunt already exists
+    if (err.code === 11000) {
+      return res.status(409).json({
+        isSuccess: false,
+        message: "User already exists with this email",
+        data: {},
+      });
+    }
+
     if (err.name === "ValidationError") {
       return res.status(400).json({
         isSuccess: false,
@@ -67,4 +76,42 @@ const userSignupController = async (req, res) => {
   }
 };
 
-module.exports = { userSignupController };
+const userLoginController = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // 1. Find user by email
+    const user = await UserModel.findOne({ email });
+    if (!user) {
+      return res.status(404).json({
+        isSuccess: false,
+        message: "User not found",
+        data: {},
+      });
+    }
+    // 2. Check password match
+    if (user.password !== password) {
+      return res.status(401).json({
+        isSuccess: false,
+        message: "Invalid password",
+        data: {},
+      });
+    }
+    // 3. Return user data (excluding password)
+    const { password: _, ...userData } = user.toObject();
+    res.status(200).json({
+      isSuccess: true,
+      message: "User logged in successfully ✅",
+      data: { user: userData },
+    });
+  } catch (err) {
+    console.log("---error in user login---", err.message);
+    res.status(500).json({
+      isSuccess: false,
+      message: "Internal Server Error",
+      data: {},
+    });
+  }
+};
+
+module.exports = { userSignupController , userLoginController};
