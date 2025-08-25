@@ -1,5 +1,6 @@
 const { UserModel } = require("../../../models/userSchema");
 const { OtpModel } = require("../../../models/otpSchema");
+const jwt = require("jsonwebtoken");
 
 const userSignupController = async (req, res) => {
   try {
@@ -98,6 +99,32 @@ const userLoginController = async (req, res) => {
       });
     }
     // 3. Return user data (excluding password)
+
+    const token = jwt.sign({
+      id: user._id,
+      email: user.email
+    }, process.env.JWT_SECRET, { expiresIn: 60*60*24 }, (err, token) => {
+      if (err) {
+        console.log("Error generating token", err);
+        return res.status(500).json({
+          isSuccess: false,
+          message: "Error generating token",
+          data: {},
+        });
+      }
+      // Send token in response
+      res.setHeader('Authorization', `Bearer ${token}`);
+    })
+
+    console.log("Generated Token:", token);
+
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: true, // Use secure cookies in production
+      sameSite: "None",
+      
+    });
+
     const { password: _, ...userData } = user.toObject();
     res.status(200).json({
       isSuccess: true,

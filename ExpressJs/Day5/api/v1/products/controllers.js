@@ -145,6 +145,36 @@ const listProductController = async (req, res) => {
     }
 };
 
+const viewProductController = async(req, res)=>{
+    try{
+        const productId = req.params.productId.trim(); // <-- trim here
+        const product = await ProductModel.findById(productId);
+
+        if(!product){
+            return res.status(404).json({
+                isSuccess: false,
+                message: "Product not found",
+                data: {},
+            })
+        }
+
+        res.status(200).json({
+            isSuccess: true,
+            message: "Product retrieved",
+            data: {
+                product
+            }
+        })
+    }
+    catch(err){
+        console.log('---error in getting product---', err.message);
+        res.status(500).json({
+            isSuccess: false,
+            message: "Internal Server Error",
+            data: {},
+        })
+    }
+};
 
 
-module.exports = {createProductController, getProductController, updateProductController, deleteProductController, listProductController}
+module.exports = {createProductController, getProductController, updateProductController, deleteProductController, listProductController, viewProductController}

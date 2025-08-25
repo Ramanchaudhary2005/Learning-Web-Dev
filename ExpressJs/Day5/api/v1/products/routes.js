@@ -1,5 +1,5 @@
 const express = require("express");
-const {createProductController, updateProductController, getProductController, deleteProductController, listProductController} = require("./controllers");
+const {createProductController, updateProductController, getProductController, deleteProductController, listProductController, viewProductController} = require("./controllers");
 const { createProductValidator, getProductValidator } = require("./dto");
 const productRouter = express.Router();
 
@@ -8,5 +8,6 @@ productRouter.patch("/:productId",createProductValidator, updateProductControlle
 productRouter.get("/", getProductController);
 productRouter.get("/list", listProductController);
 productRouter.delete("/:productId",  deleteProductController);
+productRouter.patch("/view/:productId", viewProductController);
 
 module.exports = {productRouter};
