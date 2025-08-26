@@ -10,25 +10,44 @@ const getCartItems = (req, res) => {
 
 const addCartItem = (req, res) => {
   try {
-    const { productId, name, price, quantity } = req.body;
+    const { productId, name, price, quantity, thumbnail } = req.body;
 
+    // Validate required fields
     if (!productId || !name || !price || !quantity) {
-      return res.status(400).json({ success: false, message: "Missing required fields" });
+      return res.status(400).json({ 
+        success: false, 
+        message: "Missing required fields" 
+      });
     }
 
-    // Check if item already in cart, update quantity
+    // Check if item already exists in cart
     const existing = cart.find((item) => item.productId === productId);
     if (existing) {
       existing.quantity += quantity;
     } else {
-      cart.push({ id: Date.now().toString(), productId, name, price, quantity });
+      cart.push({ 
+        id: Date.now().toString(), 
+        productId, 
+        name, 
+        price, 
+        quantity, 
+        thumbnail: thumbnail || "" // store image URL (optional if not provided)
+      });
     }
 
-    res.status(201).json({ success: true, message: "Item added to cart", data: cart });
+    res.status(201).json({ 
+      success: true, 
+      message: "Item added to cart", 
+      data: cart 
+    });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Failed to add cart item" });
+    res.status(500).json({ 
+      success: false, 
+      message: "Failed to add cart item" 
+    });
   }
 };
+
 
 const removeCartItem = (req, res) => {
   try {

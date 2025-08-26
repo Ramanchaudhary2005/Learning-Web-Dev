@@ -116,23 +116,27 @@ const listProductController = async (req, res) => {
         const sortField = req.query.sort || "price";
         const sortOrder = req.query.order === "asc" ? 1 : -1; // default = descending
 
-        const searchRegex = new RegExp(q, "i");
+        // Build search query - if q is empty or just whitespace, return all products
+        let searchQuery = {};
+        if (q && q.trim() !== "") {
+            const searchRegex = new RegExp(q.trim(), "i");
+            searchQuery = {
+                $or: [{ title: searchRegex }, { description: searchRegex }]
+            };
+        }
+        // If q is empty, searchQuery remains {} which returns all products
 
         // Count all results
-        const totalProducts = await ProductModel.countDocuments({
-            $or: [{ title: searchRegex }, { description: searchRegex }]
-        });
+        const totalProducts = await ProductModel.countDocuments(searchQuery);
 
-        const products = await ProductModel.find({
-            $or: [{ title: searchRegex }, { description: searchRegex }]
-        })
+        const products = await ProductModel.find(searchQuery)
         .skip(skip)
         .limit(limit)
         .sort({ [sortField]: sortOrder }); // <-- apply sorting
 
         res.status(200).json({
             isSuccess: true,
-            message: "Products retrieved",
+            message: q && q.trim() !== "" ? "Products retrieved" : "All products retrieved",
             data: { products, total: totalProducts, limit, page }
         });
     } catch (err) {
