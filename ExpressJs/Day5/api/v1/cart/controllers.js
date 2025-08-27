@@ -1,4 +1,4 @@
-let cart = []; // This should be replaced with DB calls
+let cart = []; 
 
 const getCartItems = (req, res) => {
   try {
@@ -31,7 +31,7 @@ const addCartItem = (req, res) => {
         name, 
         price, 
         quantity, 
-        thumbnail: thumbnail || "" // store image URL (optional if not provided)
+        thumbnail: thumbnail || "" 
       });
     }
 
